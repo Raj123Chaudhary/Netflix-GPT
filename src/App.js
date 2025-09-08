@@ -1,11 +1,14 @@
 
-
+import { Body } from "./Components/Body";
+import { Login } from "./Components/Login";
+import "./App.css"
 
 function App() {
   return (
-    <div className="text-red-600 text-xl">
-           raj pal
+    <div >
+          <Body/>
     </div>
+
   );
 }
 
