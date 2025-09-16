@@ -18,6 +18,9 @@
   -Profile update is remaining for me (like name and photoURL)
   -BUG FIX : If user is not logged in redirect /browse to login page and vice versa
   - BUG FIX : Unsubscribe the onAuthStateChanged callback
+  -Register in Rapid and register a app and get access token
+  -Get data from IMDB topRated movies api
+  -
    
  # Fetures
 

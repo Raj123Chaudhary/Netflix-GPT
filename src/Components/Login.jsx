@@ -4,7 +4,10 @@ import { Header } from "./Header";
 import { validForm } from "../Utils/valide";
 import { auth } from "../Utils/firebase";
 
-import { createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -19,18 +22,16 @@ const Login = () => {
 
   const handleSubmit = () => {
     // validateForm
-    
+
     const message = validForm(email.current.value, password.current.value);
 
     setErrorMsg(message);
     if (message) {
       return;
     }
-   
 
     // signup/singIN logic
     if (!IsSignIn) {
-   
       //signUP Logic
       createUserWithEmailAndPassword(
         auth,
@@ -40,7 +41,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          // console.log(user)
+
           // ...
         })
         .catch((error) => {
@@ -52,21 +53,23 @@ const Login = () => {
         });
     } else {
       // signIN Logic
-      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-   
-    // console.log(user)
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    setErrorMsg(errorCode+"-"+errorMessage)
-  });
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
 
-    
+          // console.log(user)
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMsg(errorCode + "-" + errorMessage);
+        });
     }
   };
   return (
